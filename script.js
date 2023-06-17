@@ -3,7 +3,7 @@
  const chatContainer = document.querySelector(".chat-container");
 
 let userText = null;
-const API_KEY = "";
+const API_KEY = "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";
 
 const createElement = (html, className) => {
     // created new div and apply chat, specified class and set html content of div
@@ -15,7 +15,7 @@ const createElement = (html, className) => {
 
 // chat response function
 
-const getChatResponse = () => {
+const getChatResponse = async () => {
     const API_URL = "https://api.openai.com/v1/completions";
 
     // Define the properties and data for the API request
@@ -28,7 +28,7 @@ const getChatResponse = () => {
         body: JSON.stringify({
             "model": "text-davinci-003",
             "prompt": userText,
-            "max_tokens": 2048,
+            "max_tokens": 204,
             "temperature": 0.2,
             "n": 1,
             "stream": false,
@@ -36,6 +36,14 @@ const getChatResponse = () => {
             "stop": null
         })
     }
+
+    try{
+        const response = await (await fetch (API_URL, requestOptions)).json();
+        console.log(response);
+    } catch(error) {
+        console.log(error);
+    }
+
 }
 
 
