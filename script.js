@@ -3,7 +3,7 @@
  const chatContainer = document.querySelector(".chat-container");
 
 let userText = null;
-const API_KEY = "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";
+const API_KEY = "sk-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";
 
 const createElement = (html, className) => {
     // created new div and apply chat, specified class and set html content of div
@@ -31,14 +31,12 @@ const getChatResponse = async () => {
             "max_tokens": 204,
             "temperature": 0.2,
             "n": 1,
-            "stream": false,
-            "logprobs": null,
             "stop": null
         })
     }
 
     try{
-        const response = await (await fetch (API_URL, requestOptions)).json();
+        const response = await (await fetch(API_URL, requestOptions)).json();
         console.log(response);
     } catch(error) {
         console.log(error);
