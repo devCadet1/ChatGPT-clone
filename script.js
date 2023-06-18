@@ -3,7 +3,7 @@
  const chatContainer = document.querySelector(".chat-container");
 
 let userText = null;
-const API_KEY = "sk-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";
+const API_KEY = "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";
 
 const createElement = (html, className) => {
     // created new div and apply chat, specified class and set html content of div
