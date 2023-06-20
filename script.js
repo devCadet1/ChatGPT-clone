@@ -3,7 +3,7 @@
  const chatContainer = document.querySelector(".chat-container");
 
 let userText = null;
-// const API_KEY = "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";
+// const API_KEY = "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";
 
 const createElement = (html, className) => {
     // created new div and apply chat, specified class and set html content of div
@@ -15,8 +15,10 @@ const createElement = (html, className) => {
 
 // chat response function
 
-const getChatResponse = async () => {
+const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/completions";
+    const pElement = document.createElement('p');
+
 
     // Define the properties and data for the API request
     const requestOptions = {
@@ -35,12 +37,15 @@ const getChatResponse = async () => {
         })
     }
 
+    //  send POST request to API, get response and set the response as paragraph element text
     try{
         const response = await (await fetch(API_URL, requestOptions)).json();
-        console.log(response);
+        pElement.textContent = response.choices[0].text;
     } catch(error) {
         console.log(error);
     }
+    incomingChatDiv.querySelector('.typing-animation').remove();
+    incomingChatDiv.querySelector('.chat-details').appendChild(pElement)
 
 }
 
@@ -60,12 +65,12 @@ const showTypingAnimation = () => {
                     </div>`;
 
         // create an incoming chat div with typing animation and append it to chat container 
-    const outgoingChatDiv = createElement(html, "incomingChatDiv")
-    chatContainer.appendChild(outgoingChatDiv)
+    const incomingChatDiv = createElement(html, "incomingChatDiv")
+    chatContainer.appendChild(incomingChatDiv)
 
     // code for getting chat response
 
-    getChatResponse();
+    getChatResponse(incomingChatDiv);
 }
 
 
