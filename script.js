@@ -63,7 +63,8 @@ const showTypingAnimation = () => {
                         <span class="material-symbols-rounded">content_copy</span>
                     </div>`;
 
-        // create an incoming chat div with typing animation and append it to chat container 
+  // create an incoming chat div with typing animation and append it to chat container 
+
     const incomingChatDiv = createElement(html, "incomingChatDiv")
     chatContainer.appendChild(incomingChatDiv)
 
@@ -87,7 +88,7 @@ const handleOutgoingChat = () => {
     chatContainer.appendChild(outgoingChatDiv)
 
     // showing animation for 3 dots after sending a message
-    setTimeout(showTypingAnimation, 500)
+    setTimeout(showTypingAnimation, 800)
 
 
 }
